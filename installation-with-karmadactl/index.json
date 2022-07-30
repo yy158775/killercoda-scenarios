@@ -1,0 +1,7 @@
+{
+  "title": "Install Karmada with CLI(karmadactl)",
+  "description": "Install Karmada onto a two node Kubernetes cluster by CLI karmadactl.",
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}
