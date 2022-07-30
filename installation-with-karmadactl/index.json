@@ -1,6 +1,26 @@
 {
   "title": "Install Karmada with CLI(karmadactl)",
   "description": "Install Karmada onto a two node Kubernetes cluster by CLI karmadactl.",
+  "details": {
+    "intro": {
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "title": "Learn your Kubernetes",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Download karmadactl",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
   "backend": {
     "imageid": "kubernetes-kubeadm-2nodes"
   }
