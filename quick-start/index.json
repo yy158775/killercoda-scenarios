@@ -1,0 +1,25 @@
+{
+  "title": "Quick start",
+  "description": "Quick start with Karmada.",
+  "details": {
+    "intro": {
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "title": "Start the environment",
+        "text": "step1/text.md",
+      },
+      {
+        "title": "Download karmadactl",
+        "text": "step2/text.md",
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
