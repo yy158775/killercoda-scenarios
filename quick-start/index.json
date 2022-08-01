@@ -8,11 +8,11 @@
     "steps": [
       {
         "title": "Start the environment",
-        "text": "step1/text.md",
+        "text": "step1/text.md"
       },
       {
         "title": "Download karmadactl",
-        "text": "step2/text.md",
+        "text": "step2/text.md"
       }
     ],
     "finish": {
