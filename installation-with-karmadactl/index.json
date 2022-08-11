@@ -12,22 +12,22 @@
         "verify": "step1/verify.sh"
       },
       {
-        "title": "Download karmadactl",
+        "title": "Install Karmada",
         "text": "step2/text.md",
         "verify": "step2/verify.sh"
       },
       {
-        "title": "context",
+        "title": "Use karmada-apiserver context",
         "text": "step3/text.md",
         "verify": "step3/verify.sh"
       },
       {
-        "title": "kind create cluster",
+        "title": "Create clusters to join",
         "text": "step4/text.md",
         "verify": "step4/verify.sh"
       },
       {
-        "title": "Download karmadactl",
+        "title": "Propagate application",
         "text": "step5/text.md",
         "verify": "step5/verify.sh"
       }
