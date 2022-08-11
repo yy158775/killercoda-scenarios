@@ -1,3 +1,5 @@
+Karmada is a Kubernetes management system that enables you to run your applications across multiple Kubernetes clusters and clouds.
+In the first place,We should install karmada in a Kubernetes cluster.
 
 Download the karmadactl from release page:
 
@@ -12,11 +14,11 @@ Then
 
 `export PATH=$PATH:/root/`{{exec}}
 
-Then
+Check that karmadactl is configured to talk to your cluster, by running the kubectl version command:
 
 `karmadactl version`{{exec}}
 
-Then
+Begin to install karmada in kubernetes cluster.
 
 `karmadactl init`{{exec}}
 
