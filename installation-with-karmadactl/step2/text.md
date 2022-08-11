@@ -3,12 +3,10 @@ In the first place,We should install karmada in a Kubernetes cluster.
 
 Download the karmadactl from release page:
 
-`wget https://github.com/karmada-io/karmada/releases/download/v1.2.1/karmadactl-linux-amd64.tgz`{{exec}}
-`
-
-Then
-
-`tar -zxvf karmadactl-linux-amd64.tgz`{{exec}}
+```
+wget https://github.com/karmada-io/karmada/releases/download/v1.2.1/karmadactl-linux-amd64.tgz
+tar -zxvf karmadactl-linux-amd64.tgz
+```{{exec}}
 
 Then
 

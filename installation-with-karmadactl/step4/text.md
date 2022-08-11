@@ -10,8 +10,8 @@ Install kind from release binaries.
 
 Create two new clusters.
 
-`kind create cluster --name member1 --kubeconfig $HOME/.kube/member1.config`{{exec}}
-`kind create cluster --name member2 --kubeconfig $HOME/.kube/member2.config`{{exec}}
+`kind create cluster --name member1 --kubeconfig $HOME/.kube/member1.config --image kindest/node:v1.23.0`{{exec}}
+`kind create cluster --name member2 --kubeconfig $HOME/.kube/member2.config --image kindest/node:v1.23.0`{{exec}}
 
 Check the new cluster member1 and member2
 
