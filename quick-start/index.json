@@ -1,6 +1,6 @@
 {
-  "title": "Quick start",
-  "description": "Quick start with Karmada.",
+  "title": "Register a cluster",
+  "description": "Register a cluster to control plane and create a deployment.",
   "details": {
     "intro": {
       "text": "intro.md"
@@ -11,8 +11,16 @@
         "text": "step1/text.md"
       },
       {
-        "title": "Download karmadactl",
+        "title": "Create cluster",
         "text": "step2/text.md"
+      },
+      {
+        "title": "Join the karmada",
+        "text": "step3/text.md"
+      },
+      {
+        "title": "Deploy",
+        "text": "step4/text.md"
       }
     ],
     "finish": {
@@ -20,6 +28,6 @@
     }
   },
   "backend": {
-    "imageid": "ubuntu"
+    "imageid": "kubernetes-kubeadm-2nodes-ubuntu20.04"
   }
 }

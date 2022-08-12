@@ -1,36 +1,27 @@
+Create a new cluster using kind.
 
-Download the karmadactl from release page:
+The environment only have one cluster which has become control plane.
 
-`wget https://github.com/karmada-io/karmada/releases/download/v1.2.1/karmadactl-linux-amd64.tgz`{{exec}}
-`
+So we will use kind to create a new clusters.
 
-Then
+kind is a tool for running local Kubernetes clusters using Docker container “nodes”.
 
-`tar -zxvf karmadactl-linux-amd64.tgz`{{exec}}
+Install kind from release binaries.
 
-Then
-
-`export PATH=$PATH:/root/`{{exec}}
-
-Then
-
-`karmadactl version`{{exec}}
-
-Then
-
-`karmadactl init`{{exec}}
-
-The components of Karmada are installed in karmada-system namespace by default, you can get them by:
-
-`kubectl get deployments -n karmada-system`{{exec}}
-
-You might get similar output as follows:
 ```
-NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
-karmada-aggregated-apiserver   1/1     1            1           102s
-karmada-apiserver              1/1     1            1           2m34s
-karmada-controller-manager     1/1     1            1           116s
-karmada-scheduler              1/1     1            1           119s
-karmada-webhook                1/1     1            1           113s
-kube-controller-manager        1/1     1            1           2m3s
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.14.0/kind-linux-amd64
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
+```{{exec}}
+
+Create a new clusters.
+This process can consume more time.
+
 ```
+wget https://github.com/yy158775/killercoda-scenarios/raw/main/member1.yaml
+cat member1.yaml
+```{{exec}}
+
+```
+kind create cluster --name member1 --kubeconfig $HOME/.kube/member1.config --image kindest/node:v1.23.0 --config member1.yaml
+```{{exec}}

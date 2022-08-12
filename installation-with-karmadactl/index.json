@@ -22,14 +22,9 @@
         "verify": "step3/verify.sh"
       },
       {
-        "title": "Create clusters to join",
+        "title": "Deinit karmada",
         "text": "step4/text.md",
-        "verify": "step4/verify.sh"
-      },
-      {
-        "title": "Propagate application",
-        "text": "step5/text.md",
-        "verify": "step5/verify.sh"
+        "verify": "step3/verify.sh"
       }
     ],
     "finish": {
@@ -37,6 +32,6 @@
     }
   },
   "backend": {
-    "imageid": "kubernetes-kubeadm-2nodes"
+    "imageid": "kubernetes-kubeadm-1node"
   }
 }
