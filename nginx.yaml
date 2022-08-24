@@ -17,3 +17,5 @@ spec:
       containers:
       - image: alpine
         name: nginx
+        command: 
+        - /bin/sh
