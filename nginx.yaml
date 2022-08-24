@@ -17,5 +17,4 @@ spec:
       containers:
       - image: alpine
         name: nginx
-        command: 
-        - /bin/sh
+        command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 3600']
