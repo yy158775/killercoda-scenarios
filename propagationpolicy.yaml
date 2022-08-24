@@ -1,16 +1,17 @@
 apiVersion: policy.karmada.io/v1alpha1
 kind: PropagationPolicy
 metadata:
-  name: nginx-propagation
+  name: alpine-propagation
 spec:
   resourceSelectors:
     - apiVersion: apps/v1
       kind: Deployment
-      name: nginx
+      name: alpine
   placement:
     clusterAffinity:
       clusterNames:
         - kind-member1
+        - kubernetes
     replicaScheduling:
       replicaDivisionPreference: Weighted
       replicaSchedulingType: Divided
@@ -19,4 +20,8 @@ spec:
           - targetCluster:
               clusterNames:
                 - kind-member1
+            weight: 1
+          - targetCluster:
+              clusterNames:
+                - kubernetes
             weight: 1

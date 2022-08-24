@@ -1,16 +1,16 @@
 Now we can try to propagate a deployment by Karmada.
 
-1.Create nginx deployment in Karmada
+1.Create alpine deployment in Karmada
 
-`wget https://github.com/yy158775/killercoda-scenarios/raw/main/nginx.yaml`{{exec}}
+`wget https://github.com/yy158775/killercoda-scenarios/raw/main/alpine.yaml`{{exec}}
 
-`cat nginx.yaml`{{exec}}
+`cat alpine.yaml`{{exec}}
 
 Karmada uses Kubernetes Native API definition for federated resource template, to make it easy to integrate with existing tools that already adopt on Kubernetes.
 
-`kubectl create -f nginx.yaml --kubeconfig /etc/karmada/karmada-apiserver.config`{{exec}}
+`kubectl create -f alpine.yaml --kubeconfig /etc/karmada/karmada-apiserver.config`{{exec}}
 
-2.Create PropagationPolicy that will propagate nginx to member cluster
+2.Create PropagationPolicy that will propagate alpine to member cluster
 
 `wget https://github.com/yy158775/killercoda-scenarios/raw/main/propagationpolicy.yaml`{{exec}}
 
@@ -28,6 +28,12 @@ spec.placement.replicaScheduling represents the scheduling policy on dealing wit
 
 `kubectl create -f propagationpolicy.yaml --kubeconfig /etc/karmada/karmada-apiserver.config`{{exec}}
 
-3.Check the deployment status from Karmada
+3.Check the deployment status
+
+Check from cluster member1.
 
 `kubectl get deployment --kubeconfig ~/.kube/member1.config`{{exec}}
+
+Check from Karmada control plane.
+
+`kubectl get deployment --kubeconfig /etc/karmada/karmada-apiserver.config`{{exec}}
