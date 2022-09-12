@@ -1,5 +1,5 @@
 ```
-wget https://github.com/karmada-io/karmada/releases/download/v1.2.1/karmadactl-linux-amd64.tgz
+wget https://github.com/karmada-io/karmada/releases/download/v1.3.0/karmadactl-linux-amd64.tgz
 tar -zxvf karmadactl-linux-amd64.tgz
 export PATH=$PATH:/root/
 ```{{exec}}

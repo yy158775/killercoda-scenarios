@@ -23,5 +23,5 @@ cat member1.yaml
 ```{{exec}}
 
 ```
-kind create cluster --name member1 --kubeconfig $HOME/.kube/member1.config --image kindest/node:v1.23.0 --config member1.yaml
+kind create cluster --name member1 --kubeconfig $HOME/.kube/member1.config --config member1.yaml
 ```{{exec}}

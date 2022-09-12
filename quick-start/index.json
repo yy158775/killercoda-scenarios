@@ -21,6 +21,10 @@
       {
         "title": "Deploy",
         "text": "step4/text.md"
+      },
+      {
+        "title": "Debug",
+        "text": "step5/debug.md"
       }
     ],
     "finish": {
