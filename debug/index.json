@@ -1,0 +1,21 @@
+{
+  "title": "Debug",
+  "description": "Debug",
+  "details": {
+    "intro": {
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "title": "deploy karmada-apisevrer",
+        "text": "step1/text.md"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes-ubuntu20.04"
+  }
+}

@@ -47,5 +47,5 @@ kubectl get --raw /api/v1/namespaces --kubeconfig=/etc/karmada/karmada-apiserver
 ```{{exec}}
 
 ```
-kubectl get pods -A -o wide --kubeconfig=/etc/karmada/karmada.apiserver
+kubectl get pods -A -o wide --kubeconfig=/etc/karmada/karmada-apiserver.config
 ```

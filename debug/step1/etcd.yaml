@@ -1,0 +1,126 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    karmada.io/bootstrapping: app-defaults
+  name: etcd
+  namespace: karmada-system
+spec:
+  podManagementPolicy: OrderedReady
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: etcd
+  serviceName: etcd
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: etcd
+      name: etcd
+      namespace: karmada-system
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - etcd
+              topologyKey: kubernetes.io/hostname
+            weight: 100
+      containers:
+      - command:
+        - /usr/local/bin/etcd
+        - --config-file=/etc/etcd/etcd.conf
+        image: k8s.gcr.io/etcd:3.5.3-0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -ec
+            - etcdctl get /registry --prefix --keys-only  --endpoints http://127.0.0.1:2379
+          failureThreshold: 3
+          initialDelaySeconds: 15
+          periodSeconds: 60
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: etcd
+        ports:
+        - containerPort: 2379
+          name: client
+          protocol: TCP
+        - containerPort: 2380
+          name: server
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /var/lib/karmada-etcd
+          name: etcd-data
+        - mountPath: /etc/etcd
+          name: etcd-config
+        - mountPath: /etc/kubernetes/pki
+          name: etcd-cert
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      initContainers:
+      - command:
+        - sh
+        - -c
+        - "set -ex\ncat <<EOF | tee /etc/etcd/etcd.conf\nname: ${POD_NAME}\nclient-transport-security:\n
+          \ client-cert-auth: true\n  trusted-ca-file: /etc/kubernetes/pki/ca.crt\n
+          \ key-file: /etc/kubernetes/pki/etcd-server.key\n  cert-file: /etc/kubernetes/pki/etcd-server.crt\npeer-transport-security:\n
+          \ client-cert-auth: false\n  trusted-ca-file: /etc/kubernetes/pki/ca.crt\n
+          \ key-file: /etc/kubernetes/pki/etcd-server.key\n  cert-file: /etc/kubernetes/pki/etcd-server.crt\ninitial-cluster-state:
+          new\ninitial-cluster-token: etcd-cluster\ninitial-cluster: etcd-0=http://etcd-0.etcd.karmada-system.svc.cluster.local:2380\nlisten-peer-urls:
+          http://${POD_IP}:2380 \nlisten-client-urls: https://${POD_IP}:2379,http://127.0.0.1:2379\ninitial-advertise-peer-urls:
+          http://${POD_IP}:2380\nadvertise-client-urls: https://${POD_NAME}.etcd.karmada-system.svc.cluster.local:2379\ndata-dir:
+          /var/lib/karmada-etcd\n\n"
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        image: docker.io/alpine:3.15.1
+        imagePullPolicy: IfNotPresent
+        name: etcd-init-conf
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /etc/etcd
+          name: etcd-config
+      nodeSelector:
+        karmada.io/etcd: ""
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: etcd-cert
+        secret:
+          defaultMode: 420
+          secretName: etcd-cert
+      - emptyDir: {}
+        name: etcd-config
+      - hostPath:
+          path: /var/lib/karmada-etcd
+          type: DirectoryOrCreate
+        name: etcd-data
+  updateStrategy:
+    rollingUpdate:
+      partition: 0
+    type: RollingUpdate
