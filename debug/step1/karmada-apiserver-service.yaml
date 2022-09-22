@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: karmada-apiserver
+  namespace: karmada-system
+spec:
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: server
+    nodePort: 32443
+    port: 5443
+    protocol: TCP
+    targetPort: 5443
+  selector:
+    app: karmada-apiserver
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}
