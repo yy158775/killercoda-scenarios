@@ -5,9 +5,8 @@ wget https://github.com/yy158775/killercoda-scenarios/raw/main/debug/step1/etcd-
 
 ```
 wget https://github.com/yy158775/killercoda-scenarios/raw/main/debug/step1/etcd.yaml
-wget https://github.com/yy158775/killercoda-scenarios/raw/main/debug/step1/karmada-apisever.config
-```
-{{exec}}
+wget https://github.com/yy158775/killercoda-scenarios/raw/main/debug/step1/karmada-apiserver.config
+```{{exec}}
 
 ```
 wget https://github.com/yy158775/killercoda-scenarios/raw/main/debug/step1/karmada-cert.yaml
