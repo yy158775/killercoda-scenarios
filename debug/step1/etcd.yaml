@@ -21,18 +21,6 @@ spec:
       name: etcd
       namespace: karmada-system
     spec:
-      affinity:
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                - key: app
-                  operator: In
-                  values:
-                  - etcd
-              topologyKey: kubernetes.io/hostname
-            weight: 100
       containers:
       - command:
         - /usr/local/bin/etcd
