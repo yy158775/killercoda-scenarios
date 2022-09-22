@@ -41,4 +41,4 @@ kubectl apply -f apiserver.yaml
 
 ```
 kubectl get ns -A --kubeconfig karmada-apiserver.config
-```
+```{{exec}}

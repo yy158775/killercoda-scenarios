@@ -92,6 +92,7 @@ spec:
         - mountPath: /etc/etcd
           name: etcd-config
       nodeSelector:
+        karmada.io/etcd: ""
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
