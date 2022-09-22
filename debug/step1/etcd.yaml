@@ -20,7 +20,6 @@ spec:
         app: etcd
       name: etcd
       namespace: karmada-system
-    spec:
       containers:
       - command:
         - /usr/local/bin/etcd
@@ -91,8 +90,6 @@ spec:
         volumeMounts:
         - mountPath: /etc/etcd
           name: etcd-config
-      nodeSelector:
-        karmada.io/etcd: ""
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
