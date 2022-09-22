@@ -37,3 +37,8 @@ kubectl apply -f karmada-apiserver-service.yaml
 kubectl apply -f etcd.yaml
 kubectl apply -f apiserver.yaml
 ```{{exec}}
+
+
+```
+kubectl get ns -A --kubeconfig karmada-apiserver.config
+```
